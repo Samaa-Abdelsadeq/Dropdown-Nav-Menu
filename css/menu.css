@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --HEADER-BGCOLOR: #333;
+    --HEADER-COLOR: whitesmoke;
+}
+
+html {
+    font-size: 1.5rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+header {
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+}
+.header-title-line{
+    padding: 0.25em 0.5em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
+}
+.menu-button{
+    height: 40px;
+    width: 40px;
+    background-color: transparent; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.menu-icon,
+.menu-icon::after,
+.menu-icon::before{
+    background-color: #fff;
+    border:none;
+    border-radius: 2px;
+    width: 40px;
+    height: 5px;
+    position: absolute;
+    transition-duration: 0.2s;
+}
+.menu-icon::after,
+.menu-icon::before{
+    content: "";
+}
+.menu-icon::before{
+    translate: -20px -10px;
+}
+.menu-icon::after{
+    translate: -20px 10px;
+}
+
+:is(header:hover, header:focus-within,.menu-button:hover) .menu-icon{
+    background-color: transparent ;
+    rotate: 720deg;
+}
+:is(header:hover, header:focus-within) .menu-icon::before{
+    translate: -20px 0px;
+    rotate: 45deg;
+}
+:is(header:hover, header:focus-within) .menu-icon::after{
+    translate: -20px 0px;
+    rotate: -45deg;
+}
+:is(header:hover, header:focus-within) nav{
+    display: block;
+}
+nav{
+    display: none;
+    transform-origin: top center;
+    padding: 0.5rem;
+    background-color: var(--HEADER-BGCOLOR);
+    animation-name: showMenu;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes showMenu {
+    0%{
+        scale: 1 0;
+    }
+    80%{
+        scale: 1 1.2;
+    }
+    100%{
+        scale: 1 1;
+    }
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-flow: column nowrap;
+}
+nav li {
+    border-bottom: 0.5px solid green;
+    text-align: center;
+}
+nav a{
+    display: block;
+    margin: auto;
+}
+nav a:any-link{
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    
+}
+nav a:hover, a:focus{
+    animation-name: ancherhover;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    
+}
+@keyframes ancherhover {
+    0%{
+        
+    }
+    50%{
+        font-weight: 800;
+        scale: 1.2;
+    }
+    100%{
+        
+    }
+}
